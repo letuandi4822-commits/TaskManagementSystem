@@ -6,7 +6,7 @@
 
         public int TaskId { get; set; }
 
-        public TaskItem Task { get; set; }
+        public TaskItem Task { get; set; } = null!;
 
         public string FileName { get; set; } = string.Empty;
 

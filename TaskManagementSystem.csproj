@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="docs\images\" />
     <Folder Include="wwwroot\Uploads\Tasks\" />
   </ItemGroup>
 

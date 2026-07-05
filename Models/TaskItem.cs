@@ -18,11 +18,11 @@ namespace TaskManagementSystem.Models
 
         public int ProjectId { get; set; }
 
-        public Project Project { get; set; }
+        public Project Project { get; set; } = null!;
 
         public int AssignedUserId { get; set; }
 
-        public User AssignedUser { get; set; }
+        public User AssignedUser { get; set; } = null!;
 
         public ICollection<TaskAttachment> Attachment { get; set; } = new List<TaskAttachment>();
         

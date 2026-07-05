@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using TaskManagementSystem.Data;
+using TaskManagementSystem.Seed;
 using TaskManagementSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,11 @@ builder.Services
 
 
 var app = builder.Build();
-
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    DatabaseSeeder.Seed(context);
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
