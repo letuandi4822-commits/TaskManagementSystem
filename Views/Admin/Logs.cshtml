@@ -1,0 +1,86 @@
+﻿@model List<TaskManagementSystem.Models.ActivityLog>
+
+<form asp-action="Logs"
+      asp-controller="Admin"
+      method="get"
+      class="mb-3">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <label>Search</label>
+            <input type="text"
+                   name="search"
+                   value="@Context.Request.Query["search"]"
+                   class="form-control"
+                   placeholder="Nhập Action hoặc Username..." />
+        </div>
+
+        <div class="col-md-2">
+            <label>Module</label>
+            <select name="module" class="form-select">
+
+                <option value="">All</option>
+
+                <option value="Project">Project</option>
+
+                <option value="Task">Task</option>
+
+                <option value="User">User</option>
+
+            </select>
+        </div>
+
+        @* <div class="col-md-2">
+            <label>From</label>
+            <input type="date"
+                   name="fromDate"
+                   value="@Context.Request.Query["fromDate"]"
+                   class="form-control" />
+        </div> *@
+
+        <div class="col-md-2">
+            <label>To</label>
+            <input type="date"
+                   name="toDate"
+                   value="@Context.Request.Query["toDate"]"
+                   class="form-control" />
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+
+            <button type="submit"
+                    class="btn btn-primary me-2">
+                Search
+            </button>
+
+            <a asp-action="Logs"
+               asp-controller="Admin"
+               class="btn btn-secondary">
+                Reset
+            </a>
+
+        </div>
+
+    </div>
+
+</form>
+
+<table class="table">
+
+    <tr>
+        <th>User</th>
+        <th>Action</th>
+        <th>Date</th>
+    </tr>
+
+    @foreach (var log in Model)
+    {
+        <tr>
+            <td>@log.User.Username</td>
+            <td>@log.Action</td>
+            <td>@log.CreatedAt</td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,20 @@
+﻿@model List<TaskManagementSystem.Models.Project>
+
+<table border="1">
+
+    <tr>
+        <th>Id</th>
+        <th>Project Name</th>
+        <th>Owner</th>
+    </tr>
+
+    @foreach (var project in Model)
+    {
+        <tr>
+            <td>@project.Id</td>
+            <td>@project.Name</td>
+            <td>@project.User.Username</td>
+        </tr>
+    }
+
+</table>

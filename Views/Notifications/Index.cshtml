@@ -1,0 +1,77 @@
+﻿<h2 class="mb-4 fw-bold">
+    Notifications
+</h2>
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <table class="table table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Message</th>
+                    <th width="120">Status</th>
+                    <th width="180">Time</th>
+                    <th width="150">Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Message
+                        </td>
+
+                        <td>
+
+                            <a asp-controller="MyTasks"
+                               asp-action="UpdateStatus"
+                               asp-route-id="@item.TaskId"
+                               class="btn btn-primary btn-sm">
+
+                                View Task
+
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            @item.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+
+                        </td>
+
+                        <td>
+
+                            @if (item.IsRead)
+                            {
+                                <span class="badge bg-success">
+                                    Read
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">
+                                    Unread
+                                </span>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

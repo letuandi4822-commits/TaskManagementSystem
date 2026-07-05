@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body style="font-family:Segoe UI,Arial,sans-serif;background:#f5f5f5;padding:30px;">
+
+    <div style="max-width:650px;
+                margin:auto;
+                background:white;
+                border-radius:10px;
+                overflow:hidden;
+                box-shadow:0 0 10px rgba(0,0,0,.1);">
+
+        <div style="background:#0d6efd;
+                    color:white;
+                    padding:20px;">
+
+            <h2 style="margin:0;">
+                📋 Task Management System
+            </h2>
+
+        </div>
+
+        <div style="padding:25px;">
+
+            <p>Hello <b>{{Username}}</b>,</p>
+
+            <p>
+                You have been assigned a new task.
+            </p>
+
+            <table border="1"
+                   cellpadding="10"
+                   style="width:100%;
+                          border-collapse:collapse;">
+
+                <tr>
+                    <td><b>Title</b></td>
+                    <td>{{Title}}</td>
+                </tr>
+
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>{{Description}}</td>
+                </tr>
+
+                <tr>
+                    <td><b>Status</b></td>
+                    <td>{{Status}}</td>
+                </tr>
+
+                <tr>
+                    <td><b>Due Date</b></td>
+                    <td>{{DueDate}}</td>
+                </tr>
+
+            </table>
+
+            <br>
+
+            <p>
+                Please log in to the
+                <b>Task Management System</b>
+                to view more details.
+            </p>
+
+        </div>
+
+        <div style="background:#f1f1f1;
+                    padding:15px;
+                    text-align:center;
+                    color:#666;">
+
+            This email was sent automatically.
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

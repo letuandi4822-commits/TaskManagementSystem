@@ -1,0 +1,156 @@
+﻿@model List<TaskManagementSystem.Models.TaskItem>
+
+<div class="container mt-4">
+
+	<div class="d-flex justify-content-between align-items-center mb-4">
+
+		<h2 class="fw-bold">
+
+			📋 Task Management
+
+		</h2>
+
+		<a asp-action="Create"
+		   asp-route-projectId="@ViewBag.ProjectId"
+		   class="btn btn-success">
+
+			➕ Create Task
+
+		</a>
+
+	</div>
+
+	<div class="card shadow border-0">
+
+		<div class="card-body">
+
+			<table class="table table-hover align-middle">
+
+				<thead class="table-dark">
+
+					<tr>
+
+						<th>Title</th>
+
+						<th>Status</th>
+
+						<th>Start</th>
+
+						<th>Due</th>
+
+						<th width="260">
+
+							Actions
+
+						</th>
+
+					</tr>
+
+				</thead>
+
+				<tbody>
+
+					@foreach (var task in Model)
+					{
+
+						<tr>
+
+							<td>
+
+								<div class="fw-bold">
+
+									@task.Title
+
+								</div>
+
+								<small class="text-muted">
+
+									@task.Description
+
+								</small>
+
+							</td>
+
+							<td>
+
+								@if (task.Status == "Done")
+								{
+									<span class="badge bg-success">
+
+										Done
+
+									</span>
+								}
+								else if (task.Status == "In Progress")
+								{
+									<span class="badge bg-warning text-dark">
+
+										In Progress
+
+									</span>
+								}
+								else
+								{
+									<span class="badge bg-secondary">
+
+										To Do
+
+									</span>
+								}
+
+							</td>
+
+							<td>
+
+								@task.StartDate.ToString("dd/MM/yyyy")
+
+							</td>
+
+							<td>
+
+								@task.DueDate.ToString("dd/MM/yyyy")
+
+							</td>
+
+							<td>
+
+								<a asp-action="Edit"
+								   asp-route-id="@task.Id"
+								   class="btn btn-warning btn-sm">
+
+									✏ Edit
+
+								</a>
+
+								<form asp-action="Delete"
+									  method="post"
+									  style="display:inline;">
+
+									<input type="hidden"
+										   name="id"
+										   value="@task.Id" />
+
+									<button class="btn btn-danger btn-sm"
+											onclick="return confirm('Delete this task?')">
+
+										🗑 Delete
+
+									</button>
+
+								</form>
+
+							</td>
+
+						</tr>
+
+					}
+
+				</tbody>
+
+			</table>
+
+		</div>
+
+	</div>
+
+</div>

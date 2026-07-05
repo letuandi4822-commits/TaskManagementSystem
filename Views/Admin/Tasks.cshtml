@@ -1,0 +1,9 @@
+﻿
+@model List<TaskManagementSystem.Models.TaskItem>
+@foreach (var task in Model)
+{
+	<p>@task.Title</p>
+	<p>@task.Project.Name</p>
+	<p>@task.Project.User.Username</p>
+	<hr />
+}

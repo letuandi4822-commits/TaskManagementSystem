@@ -1,0 +1,36 @@
+﻿@model List<TaskManagementSystem.Models.User>
+
+@foreach (var user in Model)
+{
+    <tr>
+        <td>@user.Username</td>
+        <td>@user.Role</td>
+
+        <td>
+            <form asp-action="ChangeRole"
+                  asp-controller="Admin"
+                  method="post">
+
+                <input type="hidden"
+                       name="id"
+                       value="@user.Id" />
+
+                @if (user.Role == "User")
+                {
+                    <button type="submit">
+                        Promote
+                    </button>
+                }
+                else
+                {
+                    <button type="submit">
+                        Demote
+                    </button>
+                }
+
+            </form>
+
+        </td>
+
+    </tr>
+}

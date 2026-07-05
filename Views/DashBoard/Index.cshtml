@@ -1,0 +1,86 @@
+﻿@model TaskManagementSystem.ViewModel.DashboardViewModel
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">🏠 User Dashboard</h2>
+        <span class="text-muted">
+            Welcome, @User.Identity!.Name
+        </span>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-3">
+                <h6 class="text-muted">Assigned Tasks</h6>
+                <h2 class="text-primary fw-bold">@Model.AssignedTasks</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-3">
+                <h6 class="text-muted">Completed</h6>
+                <h2 class="text-success fw-bold">@Model.CompletedTasks</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-3">
+                <h6 class="text-muted">Pending</h6>
+                <h2 class="text-warning fw-bold">@Model.PendingTasks</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0 text-center p-3">
+                <h6 class="text-muted">Overdue</h6>
+                <h2 class="text-danger fw-bold">@Model.OverdueTasks</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow border-0 mt-5">
+
+        <div class="card-header bg-white">
+            <h5 class="mb-0">
+                📊 Task Status
+            </h5>
+        </div>
+
+        <div class="card-body">
+
+            <div style="height:350px">
+
+                <canvas id="taskChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx=document.getElementById("taskChart");
+
+new Chart(ctx,{
+    type:'doughnut',
+    data:{
+    labels:[
+        'Completed',
+        'Pending',
+        'Overdue'],
+datasets:[{
+    data:[
+        @Model.CompletedTasks,
+        @Model.PendingTasks,
+        @Model.OverdueTasks]}]},
+        options:{
+        responsive:true,
+        maintainAspectRatio:false
+        }
+});
+</script> 

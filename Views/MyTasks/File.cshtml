@@ -1,0 +1,66 @@
+﻿@model List<TaskManagementSystem.Models.TaskAttachment>
+
+
+<h2>Task Files</h2>
+
+<a asp-action="UploadFile"
+   asp-route-taskId="@ViewBag.TaskId"
+   class="btn btn-success mb-3">
+    Upload New File
+</a>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+
+            <th>File Name</th>
+
+            <th>Upload Time</th>
+
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+@foreach(var file in Model)
+{
+    <tr>
+
+        <td>@file.FileName</td>
+
+        <td>@file.UploadedAt.ToString("dd/MM/yyyy HH:mm")</td>
+
+        <td>
+            <a asp-action="Download"
+                asp-route-id="@file.Id"
+                class="btn btn-primary btn-sm">
+                Download
+            </a>
+
+            <form asp-action="DeleteFile"
+                    method="post"
+                    style="display:inline;">
+
+                <input type="hidden"
+                        name="id"
+                        value="@file.Id" />
+
+                <button class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+
+            </form>
+
+            
+        </td>
+
+    </tr>
+}
+    </tbody>
+
+</table>

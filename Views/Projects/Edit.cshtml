@@ -1,0 +1,64 @@
+﻿@model TaskManagementSystem.ViewModel.EditProjectViewModel
+
+<div class="container mt-4">
+
+	<div class="card shadow border-0">
+
+		<div class="card-header bg-warning">
+
+			<h4 class="mb-0">
+
+				✏ Edit Project
+
+			</h4>
+
+		</div>
+
+		<div class="card-body">
+
+			<form method="post">
+
+				<input asp-for="Id" type="hidden" />
+
+				<div class="mb-3">
+
+					<label asp-for="Name"
+						   class="form-label fw-bold"></label>
+
+					<input asp-for="Name"
+						   class="form-control" />
+
+				</div>
+
+				<div class="mb-4">
+
+					<label asp-for="Description"
+						   class="form-label fw-bold"></label>
+
+					<textarea asp-for="Description"
+							  rows="4"
+							  class="form-control">
+					</textarea>
+
+				</div>
+
+				<button class="btn btn-warning">
+
+					💾 Save Changes
+
+				</button>
+
+				<a asp-action="Index"
+				   class="btn btn-secondary">
+
+					Cancel
+
+				</a>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,133 @@
+﻿@model TaskManagementSystem.ViewModel.AdminDashBroadViewModel
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="fw-bold">
+            📋 Admin Dashboard
+        </h2>
+
+        <span class="text-muted">
+
+            System Overview
+
+        </span>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h6 class="text-muted">
+
+                    Projects
+
+                </h6>
+
+                <h1 class="text-primary">
+
+                    @Model.TotalProjects
+
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h6 class="text-muted">
+
+                    Tasks
+
+                </h6>
+
+                <h1 class="text-success">
+
+                    @Model.TotalTasks
+
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h6 class="text-muted">
+
+                    Users
+
+                </h6>
+
+                <h1 class="text-warning">
+
+                    @Model.TotalUsers
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow border-0 mt-5">
+
+        <div class="card-header bg-white">
+
+            <h5>
+
+                📈 Task Statistics
+
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <div style="height:350px">
+
+                <canvas id="taskChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx=document.getElementById("taskChart");
+
+    new Chart(ctx,{
+        type:'doughnut',
+        data:{
+            labels:[
+                'Completed',
+                'Pending'
+            ],
+            datasets:[{
+                data:[
+                    @Model.CompletedTasks,
+                    @Model.PendingTasks
+                ]
+            }]
+        },
+        options:{
+            responsive:true,
+            maintainAspectRatio:false
+        }
+    });
+</script>

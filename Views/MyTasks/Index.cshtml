@@ -1,0 +1,51 @@
+﻿<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Project</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var task in Model)
+        {
+            <tr>
+
+                <td>@task.Title</td>
+
+                <td>@task.Project.Name</td>
+
+                <td>@task.Status</td>
+
+                <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
+
+                <td>
+
+                    <a asp-action="UpdateStatus"
+                       asp-route-id="@task.Id"
+                       class="btn btn-warning">
+                        Update Status
+                    </a>
+                     <a asp-action="UploadFile"
+                       asp-route-taskId="@task.Id"
+                       class="btn btn-info">
+                        Upload File
+                    </a>
+                    <a asp-action="File"
+                    asp-route-TaskId="@task.Id"
+                    class=" btn btn-secondary ">
+                    Files
+                    </a>
+                   
+                </td>
+                
+            </tr>
+        }
+
+    </tbody>
+
+</table>
